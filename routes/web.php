@@ -23,6 +23,9 @@ Route::get('/', function () {
 Route::get('/book', function () {
     return view('book.index');
 });
+Route::get('/rak', function(){
+    return view('book.invenbuku');
+});
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 

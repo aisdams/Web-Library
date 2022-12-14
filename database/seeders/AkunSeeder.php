@@ -17,11 +17,11 @@ class AkunSeeder extends Seeder
     {
         $user = [
             [
-            'username' => 'admin',
-            'email' => 'admin@gmail,com',
-            'level' => 'admin',
-            'notelp' => '084898293',
-            'password' => bcrypt('admin123'),
+                'username' => 'admin',
+                'email' => 'admin@gmail,com',
+                'level' => 'admin',
+                'notelp' => '084898293',
+                'password' => bcrypt('admin123'),
             ],
             [
                 'username' => 'user',
