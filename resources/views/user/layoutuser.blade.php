@@ -848,7 +848,7 @@ section{
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
             {{-- <div id="login-btn" class="fas fa-user"></div> --}}
-            <img src="http://www.intipesan.com/wp-content/uploads/2021/11/Tiga-Pelajaran-Berharga-Dalam-Kepemimpinan-Elon-Musk.jpg" alt="" width="30px" height="30px" style="border-radius: 50%; position: relative; top:5px;margin-left: 10px;margin-right: 10px" >
+            <a href=""><img src="http://www.intipesan.com/wp-content/uploads/2021/11/Tiga-Pelajaran-Berharga-Dalam-Kepemimpinan-Elon-Musk.jpg" alt="" width="30px" height="30px" style="border-radius: 50%; position: relative; top:5px;margin-left: 10px;margin-right: 10px" title="Profile"></a>
             <span style="font-size: 15px;position: absolute;top: 3rem;bottom: 0">{{ Auth::user()->username }}</span>
         </div>
 
