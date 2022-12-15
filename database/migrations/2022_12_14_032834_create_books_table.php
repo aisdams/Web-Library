@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_buku');
             $table->string('judul_buku');
+            $table->string('image');
             $table->string('penulis_buku');
             $table->string('penerbit_buku');
             $table->integer('stok');

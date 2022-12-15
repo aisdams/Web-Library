@@ -141,7 +141,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item {{ 'dashboard' == request()->path() ? 'active' : '' }}">
               <a href="/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -151,7 +151,7 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Library</span>
             </li>
-            <li class="menu-item">
+            <li class="menu-item {{ 'book' == request()->path() ? 'active' : '' }}">
               <a href="/book" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Analytics">Buku</div>
@@ -163,24 +163,24 @@
                 <div data-i18n="Authentications">Perpustakaan</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {{ 'peminjaman' == request()->path() ? 'active' : '' }}">
                   <a href="auth-login-basic.html" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Peminjaman</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ 'pengembalian' == request()->path() ? 'active' : '' }}">
                   <a href="auth-register-basic.html" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Pengembalian</div>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
+            {{-- <li class="menu-item">
               <a href="/rak" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Analytics">Rak</div>
               </a>
-            </li>
+            </li> --}}
           </ul>
         </aside>
         <!-- / Menu -->
@@ -279,7 +279,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a class="dropdown-item" href="{{ route('logout') }}">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -350,6 +350,12 @@
     </div>
 
     <!-- Core JS -->
+    @stack('scripts')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- build:js assets/vendor/js/core.js -->
     <script src="{{ asset('template/assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('template/assets/vendor/libs/popper/popper.js') }}"></script>

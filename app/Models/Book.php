@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Book extends Model
 {
     protected $fillable = [
-        'kode_buku','judul_buku', 'penulis_buku', 'penerbit_buku','stok','jumlah_tersedia','jumlah_rusak','jumlah_pinjam'
+        'kode_buku','judul_buku', 'image', 'penulis_buku', 'penerbit_buku','stok','jumlah_tersedia','jumlah_rusak','jumlah_pinjam'
     ];
     protected $primaryKey = "id";
     use HasFactory;
