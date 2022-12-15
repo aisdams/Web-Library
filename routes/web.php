@@ -23,8 +23,14 @@ Route::get('/', function () {
 Route::get('/book', function () {
     return view('book.index');
 });
-Route::get('/rak', function(){
+Route::get('/inventori', function(){
     return view('book.invenbuku');
+});
+Route::get('/perpustakaan/peminjaman', function(){
+    return view('perpustakaan.peminjaman');
+});
+Route::get('/perpustakaan/pengembalian', function(){
+    return view('perpustakaan.pengembalian');
 });
 
 Route::get('login', [AuthController::class, 'index'])->name('login');

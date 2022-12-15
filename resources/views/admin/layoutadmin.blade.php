@@ -164,21 +164,21 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a href="/perpustakaan/peminjaman" class="menu-link">
                     <div data-i18n="Basic">Peminjaman</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                  <a href="/perpustakaan/pengembalian" class="menu-link">
                     <div data-i18n="Basic">Pengembalian</div>
                   </a>
                 </li>
               </ul>
             </li>
             <li class="menu-item">
-              <a href="/rak" class="menu-link">
+              <a href="/inventori" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Analytics">Rak</div>
+                <div data-i18n="Analytics">Inventori Buku</div>
               </a>
             </li>
           </ul>
@@ -311,25 +311,7 @@
                     document.write(new Date().getFullYear());
                   </script>
                   , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-                </div>
-                <div>
-                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                  <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Documentation</a
-                  >
-
-                  <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Support</a
-                  >
+                  <p class="footer-link fw-bolder">Us</p>
                 </div>
               </div>
             </footer>
@@ -339,15 +321,6 @@
           </div>
           <!-- Content wrapper -->
     <!-- / Layout wrapper -->
-
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
