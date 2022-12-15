@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 
@@ -20,10 +21,10 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('/book', function () {
-    return view('book.index');
-});
-Route::get('/inventori', function(){
+// Route::get('/book', function () {
+//     return view('book.index');
+// });
+Route::get('/rak', function(){
     return view('book.invenbuku');
 });
 Route::get('/perpustakaan/peminjaman', function(){
@@ -53,3 +54,5 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('user', [UserController::class, 'index'])->name('user');
     });
 });
+
+Route::resource('book', BookController::class)->middleware('auth');

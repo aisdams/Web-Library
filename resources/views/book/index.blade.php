@@ -1,9 +1,7 @@
-@extends('dashboard')
-@section('judul','Data Pemesanan')
+@extends('admin.layoutadmin')
 @section('content')
 @push('style')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css" integrity="sha512-9tISBnhZjiw7MV4a1gbemtB9tmPcoJ7ahj8QWIc0daBCdvlKjEA48oLlo6zALYm3037tPYYulT0YQyJIJJoyMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
     table.dataTable thead .sorting:before,
     table.dataTable thead .sorting_asc:before,
@@ -28,59 +26,160 @@
 </style>
 @endpush
 <div class="card">
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ $message }}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+    @endif
     <div class="card-body">
-        <a href="{{ url('checkpemesanan/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
-                class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
-        <table class="table table-bordered dataTable table-hover table-sm table-responsive" id="fasilitas">
-        <a href="/exportpemesanan" class="btn btn-icon icon-left btn-danger mb-4"></i><i class="fa-solid fa-file-pdf"></i><span class="px-2">Export PDF</span></a>
-            <thead style="font-size: 14px"  class="table-success">
+        <h4>Form Create Book</h4>
+        <div class="createnya">
+            <form action="{{ url('book') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="form-grup">
+                    <div class="row g-2">
+                        <div class="col mb-3">
+                            <label class="form-label">Kode Buku</label>
+                            <input type="text" name="kode_buku" class="form-control" id="" placeholder="Input Kode Buku In Here" autocomplete>
+                            @error('kode_buku')
+                            <div class="text-warning">{{ $message }}</div>
+                            @enderror
+                        </div>
+        
+                        <div class="col mb-3">
+                            <label class="form-label">Judul Buku</label>
+                            <input type="text" name="judul_buku" class="form-control" id="" placeholder="Input Judul Buku In Here" autocomplete>
+                            @error('judul_buku')
+                            <div class="text-warning">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col mb-3">
+                            <label class="form-label">Penulis Buku</label>
+                            <input type="text" name="penulis_buku" class="form-control" id="" placeholder="Input Penulis Buku In Here" autocomplete>
+                            @error('penulis_buku')
+                            <div class="text-warning">{{ $message }}</div>
+                            @enderror
+                        </div>
+        
+                        <div class="col mb-3">
+                            <label class="form-label">Penerbit Buku</label>
+                            <input type="text" name="penerbit_buku" class="form-control" id="" placeholder="Input Penerbit Buku In Here" autocomplete>
+                            @error('penerbit_buku')
+                            <div class="text-warning">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col mb-3">
+                            <label class="form-label">Stok</label>
+                            <input type="number" name="stok" class="form-control" id="" placeholder="Input Stok In Here" autocomplete>
+                            @error('stok')
+                            <div class="text-warning">{{ $message }}</div>
+                            @enderror
+                        </div>
+        
+                        
+                        <div class="col mb-3">
+                            <label class="form-label">Jumlah Tersedia</label>
+                            <input type="number" name="jumlah_tersedia" class="form-control" id="" placeholder="Input Jumlah Tersedia In Here" autocomplete>
+                            @error('jumlah_tersedia')
+                            <div class="text-warning">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="row g-2">
+        
+                        <div class="col mb-3">
+                            <label class="form-label">Jumlah Rusak</label>
+                            <input type="text" name="jumlah_rusak" class="form-control" id="" placeholder="Input Jumlah Rusak In Here" autocomplete>
+                            @error('jumlah_rusak')
+                            <div class="text-warning">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col mb-3">
+                            <label class="form-label">Image</label>
+                            <input type="file" class="form-control" name="image" required>
+                            @error('image')
+                            <div class="text-warning">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                    </div>
+
+                    <div class="row g-2">
+
+                        <div class="col mb-3">
+                            {{-- <label class="form-label">Jumlah Terpinjam</label> --}}
+                            <input type="hidden" required placeholder="Jumlah Barang Terpinjam" class="form-control" name="jumlah_pinjam"
+                            value="0">
+                        </div>
+        
+                    </div>
+                    <button type="submit" class="btn btn-success mb-3 mt-4">Create</button>
+                </div>
+            </form>
+        </div>
+        <hr>
+        {{-- end create --}}
+
+        {{-- <a href="{{ url('checkpemesanan/create') }}" class="btn btn-primary mb-4"><i class="fas fa-plus"></i><span>Tambah</span></a> --}}
+        <div class="table-responsive">
+        <table class="table dataTable table-hover table-responsive table-sm" id="book">
+            <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama Hotel</th>
-                    <th scope="col">Jumlah Orang</th>
-                    <th scope="col">Jumlah Room Use</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">No Telp</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Room Type</th>
-                    <th scope="col">Spesial Request</th>
-                    <th scope="col">Tanggal CheckIn</th>
-                    <th scope="col">Tanggal CheckOut</th>
+                    <th scope="col">Kode Buku</th>
+                    <th scope="col">Judul Buku</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Penulis Buku</th>
+                    <th scope="col">Penerbit Buku</th>
+                    <th scope="col">Stok</th>
+                    <th scope="col">Jumlah Tersedia</th>
+                    <th scope="col">Jumlah Rusak</th>
+                    <th scope="col">Jumlah Pinjam</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody class="alldata">
-                @foreach ( $data as $item )
+                @foreach ( $book as $item )
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $item->fasilitashotel->namahotel }}</td>
-                    <td>{{ $item->bprorng }}</td>
-                    <td>{{ $item->jumlahkamar_pinjam }}</td>
-                    <td>{{ $item->firstname }}</td>
-                    <td>{{ $item->lastname }}</td>
-                    <td>{{ $item->email }}</td>
-                    <td>{{ $item->notelp }}</td>
+                    <td>{{ $item->kode_buku}}</td>
+                    <td>{{ $item->judul_buku }}</td>
+                    <td><img src="{{ asset('img/'.$item->image) }}" alt="" style="width: 200px; position:relative;"></td>
+                    <td>{{ $item->penulis_buku }}</td>
+                    <td>{{ $item->penerbit_buku }}</td>
+                    <td>{{ $item->stok }}</td>
+                    <td>{{ $item->jumlah_tersedia }}</td>
+                    <td>{{ $item->jumlah_rusak }}</td>
+                    <td>{{ $item->jumlah_pinjam }}</td>
                     <td>
-                        <input data-id="{{$item->id}}" type="checkbox" class="toggle-class" data-onstyle="warning" data-offstyle="success" data-toggle="toggle" data-on="Used" data-off="Unused" {{ $item->status ? 'checked': '' }}>
-                    </td>
-                    <td>{{ $item->fasilitaskamar->tipekamar }}</td>
-                    <td>{{ $item->spesialrequest }}</td>
-                    <td>{{ $item->tanggal_checkin }}</td>
-                    <td>{{ $item->tanggal_checkout }}</td>
-                    <td style="display: flex">
-                        <div class="dis d-flex">
-                            <a href="{{ url('/checkpemesanan/detail/'.$item->id)}}" class="btn btn-icon btn-info ms-1 text-white"><i
-                                    class="fas fa-eye"></i></a>
-                            <a href="{{ url('checkpemesanan/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning ms-1"><i
-                                    class="fas fa-pen"></i></a>
-                            <form action="{{ url('checkpemesanan',$item->id) }}" method="POST">
+                        <div class="dropdown">
+                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url('book/'.$item->id.'/edit') }}" href="javascript:void(0);"
+                            ><i class="bx bx-edit-alt me-2"></i> Edit</a
+                            >
+                        <!-- Modal -->
+                            <a class="dropdown-item" href="javascript:void(0);"
+                            >
+                            <form action="{{ url('book',$item->id) }}" method="POST">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-icon btn-danger delete ms-1"
-                                    data-name="{{ $item->fasilitaskamar->tipekamar }}"><i class="fas fa-trash"></i></button>
-                            </form>
+                                <button type="submit" class="delete" style="background: none;border:none;color:#697a8d"
+                                    data-name="{{ $item->book }}"><i class="bx bx-trash me-2"></i> Delete</button>
+                            </form></a
+                            >
+                        </div>
                         </div>
                     </td>
                 </tr>
@@ -88,7 +187,14 @@
             </tbody>
         </table>
     </div>
+    </div>
 </div>
+
+{{-- <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> --}}
+  
 @endsection
 
 @push('scripts')
@@ -96,7 +202,6 @@
 <script src="//code.jquery.com/jquery.js"></script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" integrity="sha512-F636MAkMAhtTplahL9F6KmTfxTmYcAcjcCkyu0f0voT3N/6vzAuJ4Num55a0gEJ+hRLHhdz3vDvZpf6kqgEa5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.7.0/validator.min.js"
     integrity="sha512-rJU+PnS2bHzDCvRGFhXouCSxf4YYaUyUfjXMHsHFfMKhWDIEBr8go2LZ2EYXOqASey1tWc2qToeOCYh9et2aGQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -142,7 +247,7 @@
 
 <script>
     $(function () {
-        $('#fasilitas').DataTable().fnDestroy({
+        $('#book').DataTable().fnDestroy({
             columnDefs: [{
                 paging: true,
                 scrollX: true,
