@@ -34,7 +34,10 @@
     @endif
     <div class="card-body">
         {{-- <a href="{{ url('checkpemesanan/create') }}" class="btn btn-primary mb-4"><i class="fas fa-plus"></i><span>Tambah</span></a> --}}
-        <h4>Form Create Peminjaman</h4>
+        <div class="d-flex justify-content-between">
+            <h4>Form Create Peminjaman</h4>
+            <a href="/perpustakaan/peminjaman" title="Back"><button class="btn btn-primary mt-2" style="width: 120px;position: relative;left:13px">Back</button></a>
+        </div>
         <div class="createnya">
             <form action="{{ url('perpustakaan/peminjaman') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
@@ -75,7 +78,7 @@
                           @enderror
                       </div>
                       
-                  </div>
+                    </div>
 
                     <div class="row g-2">
                         <div class="col mb-3">

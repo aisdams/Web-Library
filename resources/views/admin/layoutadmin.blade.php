@@ -164,12 +164,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item {{ 'perpustakaan/peminjaman' == request()->path() ? 'active' : '' }}">
-                  <a href="perpustakaan/peminjaman" class="menu-link">
+                  <a href="/perpustakaan/peminjaman" class="menu-link">
                     <div data-i18n="Basic">Peminjaman</div>
                   </a>
                 </li>
                 <li class="menu-item {{ 'perpustakaan/pengembalian' == request()->path() ? 'active' : '' }}">
-                  <a href="perpustakaan/pengembalian" class="menu-link">
+                  <a href="/perpustakaan/pengembalian" class="menu-link">
                     <div data-i18n="Basic">Pengembalian</div>
                   </a>
                 </li>

@@ -46,4 +46,54 @@ class PeminjamanController extends Controller
 
         return Redirect('/perpustakaan/peminjaman')->with('success', 'Data Buku berhasil Ditambahkan');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $peminjaman = Peminjaman::findorfail($id);
+        return view('perpustakaan.peminjaman.editpinjam', compact('peminjaman'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $peminjaman = Peminjaman::findorfail($id);
+        $peminjaman -> update($request->all());
+        return redirect('perpustakaan/peminjaman')->with('success', "Data Buku Berhasil Di Update");
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $delete = Peminjaman::findorfail($id);
+        $delete->delete();
+        return back()->with('destroy', "Data Buku Berhasil Di Delete");
+    }
 }
