@@ -18,8 +18,8 @@ return new class extends Migration
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
             $table->foreignId('buku_id');
-            $table->foreignId('anggota_id');
-            $table->foreignId('petugas_id');
+            // $table->foreignId('anggota_id');
+            // $table->foreignId('petugas_id');
             $table->integer('jumlahbuku_pinjam');
             $table->enum('status',['Dipinjam','Dikembalikan']);
             $table->timestamps();

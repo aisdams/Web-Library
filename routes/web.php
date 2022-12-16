@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +25,6 @@ Route::get('/', function () {
 // Route::get('/book', function () {
 //     return view('book.index');
 // });
-Route::get('/rak', function(){
-    return view('book.invenbuku');
-});
-Route::get('/perpustakaan/peminjaman', function(){
-    return view('perpustakaan.peminjaman');
-});
-Route::get('/perpustakaan/pengembalian', function(){
-    return view('perpustakaan.pengembalian');
-});
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
@@ -56,3 +48,4 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::resource('book', BookController::class)->middleware('auth');
+Route::resource('perpustakaan/peminjaman', PeminjamanController::class)->middleware('auth');
