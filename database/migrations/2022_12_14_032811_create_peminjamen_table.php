@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
-            $table->foreignId('buku_id');
+            $table->foreignId('book_id');
             // $table->foreignId('anggota_id');
             // $table->foreignId('petugas_id');
             $table->integer('jumlahbuku_pinjam');

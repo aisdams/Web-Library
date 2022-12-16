@@ -151,25 +151,25 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Library</span>
             </li>
-            <li class="menu-item {{ 'book' == request()->path() ? 'active' : '' }}">
+            <li class="menu-item {{ 'book' === request()->path() ? 'active' : '' }}">
               <a href="/book" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Analytics">Buku</div>
               </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item {{ request()->is('perpustakaan/peminjaman') ? 'active' : '' }}">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">Perpustakaan</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item {{ 'peminjaman' == request()->path() ? 'active' : '' }}">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a href="/perpustakaan/peminjaman" class="menu-link">
                     <div data-i18n="Basic">Peminjaman</div>
                   </a>
                 </li>
                 <li class="menu-item {{ 'pengembalian' == request()->path() ? 'active' : '' }}">
-                  <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                  <a href="/perpustakaan/pengembalian" class="menu-link">
                     <div data-i18n="Basic">Pengembalian</div>
                   </a>
                 </li>
@@ -178,7 +178,7 @@
             {{-- <li class="menu-item">
               <a href="/rak" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Analytics">Rak</div>
+                <div data-i18n="Analytics">Inventori Buku</div>
               </a>
             </li> --}}
           </ul>

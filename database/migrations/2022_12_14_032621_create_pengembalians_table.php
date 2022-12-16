@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal_pengembalian');
             $table->integer('denda');
-            // $table->foreignId('buku_id');
+            $table->foreignId('buku_id');
             // $table->foreignId('anggota_id');
-            $table->foreignId('petugas_id');
+            // $table->foreignId('petugas_id');
             $table->timestamps();
         });
     }

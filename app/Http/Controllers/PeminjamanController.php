@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Book;
 use App\Models\Peminjaman;
+use Illuminate\Http\Request;
 
 class PeminjamanController extends Controller
 {
@@ -25,7 +26,8 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        return view('perpustakaan.peminjaman.createpinjam');
+        $book = Book::all();
+        return view('perpustakaan.peminjaman/createpinjam', compact('book'));
     }
 
     /**
@@ -36,13 +38,15 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        Peminjaman::create([
-            'buku_id' => $request->buku_id,
-            // 'judul_buku' => $request->judul_buku,
-            'tanggal_pinjam' => $request->tanggal_pinjam,
-            'tanggal_kembali' => $request->tanggal_kembali,
-            'jumlahbuku_pinjam' => $request->jumlahbuku_pinjam,
+        $this->validate($request,[
+            'book_id' => 'required',
+            'tanggal_pinjam' => 'required',
+            'tanggal_kembali' => 'required',
+            'jumlahbuku_pinjam' => 'required',
+            'status' => 'required',
         ]);
+
+        $book = Peminjaman::create($request->all());
 
         return Redirect('/perpustakaan/peminjaman')->with('success', 'Data Buku berhasil Ditambahkan');
     }
@@ -66,8 +70,9 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
+        $book = Book::all();
         $peminjaman = Peminjaman::findorfail($id);
-        return view('perpustakaan.peminjaman.editpinjam', compact('peminjaman'));
+        return view('perpustakaan.peminjaman.editpinjam', compact('book', 'peminjaman'));
     }
 
     /**

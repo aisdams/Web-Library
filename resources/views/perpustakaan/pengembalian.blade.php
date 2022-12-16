@@ -8,8 +8,8 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Project</th>
-              <th>Client</th>
+              <th>Tanggal Pengembalian</th>
+              <th>Denda</th>
               <th>Users</th>
               <th>Status</th>
               <th>Actions</th>

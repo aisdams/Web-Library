@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('main');
 });
 
+Route::get('perpustakaan/pengembalian', function () {
+    return view('perpustakaan.pengembalian');
+});
+
 // Route::get('/book', function () {
 //     return view('book.index');
 // });
@@ -49,3 +53,4 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::resource('book', BookController::class)->middleware('auth');
 Route::resource('perpustakaan/peminjaman', PeminjamanController::class)->middleware('auth');
+// Route::resource('perpustakaan/pengembalian', PeminjamanController::class)->middleware('auth');

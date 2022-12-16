@@ -55,7 +55,7 @@
                 @foreach ( $peminjaman as $item )
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $item->buku_id}}</td>
+                    <td>{{ $item->book_id->kode_buku}}</td>
                     <td>{{ $item->buku_id}}</td>
                     <td>{{ $item->jumlahbuku_pinjam }}</td>
                     <td>{{ $item->tanggal_pinjam }}</td>

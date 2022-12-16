@@ -12,8 +12,8 @@
             <div class="row g-2">
               <div class="col mb-3">
                   <label class="form-label">Kode Buku</label>
-                  <input type="text" name="buku_id" class="form-control" id="" placeholder="Input Kode Buku In Here" autocomplete value="{{$peminjaman->buku_id}}">
-                  @error('buku_id')
+                  <input type="text" name="kode_buku_id" class="form-control" id="" placeholder="Input Kode Buku In Here" autocomplete value="{{$peminjaman->kode_buku_id}}">
+                  @error('kode_buku_id')
                   <div class="text-warning">{{ $message }}</div>
                   @enderror
               </div>

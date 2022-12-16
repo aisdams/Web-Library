@@ -43,20 +43,22 @@
                 {{ csrf_field() }}
                 <div class="form-grup">
                     <div class="row g-2">
-                        <div class="col mb-3">
-                            <label class="form-label">Kode Buku</label>
-                            <input type="text" name="buku_id" class="form-control" id="" placeholder="Input Kode Buku In Here" autocomplete>
-                            @error('buku_id')
-                            <div class="text-warning">{{ $message }}</div>
-                            @enderror
-                        </div>
-        
                         <div class="col mb-3 readonly">
                             <label class="form-label">Judul Buku</label>
-                            <input type="text" name="" class="form-control" id="" placeholder="Input Judul Buku In Here" autocomplete disabled readonly>
+                            <input type="text" name="" class="form-control" id="" placeholder="Input Judul Buku In Here" autocomplete>
                             @error('')
                             <div class="text-warning">{{ $message }}</div>
                             @enderror
+                        </div>
+
+                        <div class="col mb-3">
+                            <label class="form-label">Kode Buku</label>
+                            <select required class="form-control form-select" name="book_id" id="book_id">
+                                <option selected disabled>Choose Kode Buku</option>
+                                @foreach ($book as $item)
+                                <option value="{{ $item->id }}">{{ $item->kode_buku}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
